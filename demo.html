@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Demo - ID Card Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--panel-background);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+        .demo-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        .demo-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--card-background);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        .demo-section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .demo-section h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        .demo-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-md);
+        }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .demo-button:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: var(--shadow);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .feature-card {
+            padding: 1rem;
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-color);
+        }
+        .feature-card h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .demo-steps {
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--primary-color);
+            margin-top: 1rem;
+        }
+        .demo-steps ol {
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        .demo-steps li {
+            margin-bottom: 0.5rem;
+        }
+        .demo-steps strong {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="ticket logo.png" alt="Logo" class="main-logo">
+            </div>
+            <div class="title-container">
+                <div class="title-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                </div>
+                <h1>Preview Demo</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <span class="theme-text">Dark</span>
+            </button>
+            <div class="header-decoration"></div>
+        </header>
+
+        <div class="demo-container">
+            <div class="demo-header">
+                <h1>🎯 Preview Functionality Demo</h1>
+                <p>This demo shows you how the preview section works in the ID Card Generator</p>
+            </div>
+
+            <div class="demo-section">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    Main Preview Section
+                </h3>
+                <p>When you upload an Excel file and select fields, the main preview section will show:</p>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">🔍</span> <strong>Search Box:</strong> Search cards by name or adherent number</li>
+                    <li><span class="feature-icon">🏷️</span> <strong>Filter Dropdown:</strong> Filter by "All Cards", "Excel Cards", or "Manual Cards"</li>
+                    <li><span class="feature-icon">📄</span> <strong>Pagination:</strong> Navigate through pages (8 cards per page)</li>
+                    <li><span class="feature-icon">👆</span> <strong>Clickable Cards:</strong> Click any card to view detailed information</li>
+                    <li><span class="feature-icon">🗑️</span> <strong>Delete Buttons:</strong> Remove individual cards with delete buttons or double-click</li>
+                    <li><span class="feature-icon">🏷️</span> <strong>Type Indicators:</strong> Each card shows "EXCEL" or "MANUAL" badge</li>
+                </ul>
+            </div>
+
+            <div class="demo-section">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17v.01" />
+                    </svg>
+                    Interactive Features
+                </h3>
+                <ul class="feature-list">
+                    <li><span class="feature-icon">✨</span> <strong>Hover Effects:</strong> Cards scale up and show enhanced shadows on hover</li>
+                    <li><span class="feature-icon">👆</span> <strong>Click Animation:</strong> Cards have a satisfying click animation</li>
+                    <li><span class="feature-icon">📱</span> <strong>Modal Details:</strong> Clicking a card opens a detailed modal with field values</li>
+                    <li><span class="feature-icon">⌨️</span> <strong>Keyboard Support:</strong> Press Escape to close modals</li>
+                    <li><span class="feature-icon">📱</span> <strong>Responsive Design:</strong> Works on desktop and mobile devices</li>
+                </ul>
+            </div>
+
+            <div class="demo-section">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    How to Test the Preview
+                </h3>
+                <div class="demo-steps">
+                    <ol>
+                        <li><strong>Upload Excel File:</strong> Click "Choose Excel File" and select a file with student data</li>
+                        <li><strong>Upload Photos:</strong> Click "Choose Student Photos" and select a folder with student images</li>
+                        <li><strong>Select Fields:</strong> Check/uncheck the fields you want to display on cards</li>
+                        <li><strong>View Preview:</strong> Scroll down to the "Preview" section to see your cards</li>
+                        <li><strong>Interact:</strong> Try clicking on cards, using search, filters, and pagination</li>
+                        <li><strong>Add Manual Cards:</strong> Click "Add Card Manually" to add individual cards</li>
+                        <li><strong>Test Bulk Creation:</strong> Try the bulk card creation feature</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                    </svg>
+                    Preview Controls Explained
+                </h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔍 Search</h4>
+                        <p>Type to search for cards by student name or adherent number. Search is case-insensitive and updates in real-time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏷️ Filter</h4>
+                        <p>Choose to view "All Cards", only "Excel Cards", or only "Manual Cards" to focus on specific card types.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📄 Pagination</h4>
+                        <p>Navigate through pages of cards. Each page shows 8 cards in a responsive grid layout.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🗑️ Delete</h4>
+                        <p>Remove cards using the delete button (🗑️) or by double-clicking on the card. Deleted cards can be restored.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Next Steps
+                </h3>
+                <p>Now that you understand the preview functionality, you can:</p>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="demo-button" onclick="window.location.href='index.html'">
+                        🚀 Go to ID Card Generator
+                    </button>
+                    <button class="demo-button" onclick="window.open('index.html', '_blank')">
+                        📱 Open in New Tab
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>- Created with ❤️ -</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dark Mode Toggle Functionality for Demo
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const sunIcon = themeToggle.querySelector('.sun-icon');
+            const moonIcon = themeToggle.querySelector('.moon-icon');
+            const themeText = themeToggle.querySelector('.theme-text');
+            
+            // Check for saved theme preference or default to light
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeUI(newTheme);
+                
+                // Add a subtle animation effect
+                document.body.style.transition = 'all 0.3s ease';
+                setTimeout(() => {
+                    document.body.style.transition = '';
+                }, 300);
+            });
+            
+            function updateThemeUI(theme) {
+                if (theme === 'dark') {
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                    themeText.textContent = 'Light';
+                } else {
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                    themeText.textContent = 'Dark';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
+        });
+    </script>
+</body>
+</html> 
